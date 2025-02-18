@@ -16,13 +16,13 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # - name: Install Node.js
-      #   uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      # - name: Install Newman
-      #   run: npm install -g newman newman-reporter-html
+      - name: Install Newman
+        run: npm install -g newman newman-reporter-html
 
       - name: Run Postman Collection
         run:  newman run coingecko.postman_collection.json  --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
