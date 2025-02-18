@@ -26,7 +26,7 @@ jobs:
         run: npm install -g newman newman-reporter-html
 
       - name: Run Postman Collection
-        run:  newman run coingecko.postman_collection.json  --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
+        run: newman run coingecko.postman_collection.json --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
