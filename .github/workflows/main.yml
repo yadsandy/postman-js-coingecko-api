@@ -21,9 +21,9 @@ jobs:
       #   with:
       #     node-version: 18
       #   continue-on-error: true   
-
+      
       - name: Install Newman
-        run: npm install -g newman newman-reporter-html
+        run: npm install -g newman@latest
 
       - name: Run Postman Collection
         run: newman run coingecko.postman_collection.json --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
