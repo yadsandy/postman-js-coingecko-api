@@ -26,6 +26,10 @@ jobs:
     - name: Install dependencies
       run: npm install -g newman
 
+    # Install dependencies (Newman)
+    - name: run html dependencies
+      run: npm install -g newman newman-reporter-html
+      
     # Run the tests using Newman
     - name: Run Newman tests
       run: newman run coingecko.postman_collection.json --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
