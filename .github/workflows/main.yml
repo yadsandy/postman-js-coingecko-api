@@ -25,16 +25,17 @@ jobs:
 
       # Install Newman globally
       - name: Install Newman
-        run: npm install -g newman
+        run: npm install -g newman newman-reporter-html
 
       # Run Newman tests
       - name: Run Newman Tests
+        shell: cmd  # Use cmd instead of PowerShell
         run: |
-          newman run coingecko.postman_collection.json \
-            --verbose \
-            -d test_cases.json \
-            --reporters cli \
-            -r html \
+          newman run coingecko.postman_collection.json ^
+            --verbose ^
+            -d test_cases.json ^
+            --reporters cli ^
+            -r html ^
             --reporter-html-export newman-report.html
 
       # Upload HTML report as an artifact
