@@ -10,7 +10,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: windows-latest
+    runs-on: self-hosted
 
     steps:
       # Check out the repository
@@ -29,7 +29,6 @@ jobs:
 
       # Run Newman tests
       - name: Run Newman Tests
-        shell: cmd  # Use cmd instead of PowerShell
         run: newman run coingecko.postman_collection.json --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
 
       # Upload HTML report as an artifact
