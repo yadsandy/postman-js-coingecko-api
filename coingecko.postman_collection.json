@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "7ced41bf-06c0-4c58-8faa-cf16c9ba641b",
+		"name": "CoinGecko API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40852705"
+	},
+	"item": [
+		{
+			"name": "Simple Price",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify response contains expected data\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    let cryptoId = pm.environment.get(\"crypto_id\");\r",
+							"    let currency = pm.environment.get(\"currency\");\r",
+							"\r",
+							"    //  Test Case 1: Check if Status Code is 200\r",
+							"    pm.test(\"Status code is expected\", function () {\r",
+							"        pm.response.to.have.status(200);\r",
+							"    });\r",
+							"\r",
+							"    //  Test Case 2: Handle Invalid Cryptocurrency (should return empty object {})\r",
+							"    pm.test(\"Invalid cryptocurrency should return empty object {}\", function () {\r",
+							"        const invalidCases = [\"Invalid cryptocurrency\"];\r",
+							"        \r",
+							"        if (invalidCases.includes(pm.iterationData.get(\"test_case\"))) {\r",
+							"            pm.expect(jsonData).to.be.empty;  // Expecting empty object {}\r",
+							"        }\r",
+							"    });\r",
+							"\r",
+							"    //  Test Case 3: Handle Invalid Currency (should return expected structure)\r",
+							"    pm.test(\"Invalid currency or missing currencies should return {} for each crypto\", function () {\r",
+							"        const invalidCurrency = [\"Invalid currency\", \"Missing currencies\"];\r",
+							"        \r",
+							"        if (invalidCurrency.includes(pm.iterationData.get(\"test_case\"))) {\r",
+							"            let expectedResponse = {};\r",
+							"            expectedResponse[cryptoId.toLowerCase()] = {};  // An empty object for each crypto\r",
+							"            pm.expect(jsonData).to.deep.equal(expectedResponse); // Checking if the response is empty for the given crypto\r",
+							"        }\r",
+							"    });\r",
+							"\r",
+							"    //  Test Case 4: Check Valid Response (Expected Currency and Crypto ID data)\r",
+							"    if (pm.response.code === 200 && cryptoId && currency) {\r",
+							"        let cryptoList = cryptoId.toLowerCase().split(\",\");\r",
+							"        let currencyList = currency.toLowerCase().split(\",\");\r",
+							"\r",
+							"        pm.test(\"Valid response for cryptocurrency data\", function () {\r",
+							"            cryptoList.forEach(crypto => {\r",
+							"                pm.expect(jsonData).to.have.property(crypto);  // Check if crypto is in response\r",
+							"\r",
+							"                currencyList.forEach(curr => {\r",
+							"                    pm.expect(jsonData[crypto]).to.have.property(curr);  // Check if each currency exists for the crypto\r",
+							"                });\r",
+							"            });\r",
+							"        });\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"\r",
+							"// Perfromance Test\r",
+							"pm.test(\"Response time should be within acceptable limits (<1 second)\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);  // <1 second\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (pm.iterationData.get(\"crypto_id\") !== \"N/A\") {\r",
+							"    pm.environment.set(\"crypto_id\", pm.iterationData.get(\"crypto_id\"));\r",
+							"} else {\r",
+							"    pm.environment.unset(\"crypto_id\");\r",
+							"}\r",
+							"\r",
+							"if (pm.iterationData.get(\"currency\") !== \"N/A\") {\r",
+							"    pm.environment.set(\"currency\", pm.iterationData.get(\"currency\"));\r",
+							"} else {\r",
+							"    pm.environment.unset(\"currency\");\r",
+							"}\r",
+							"\r",
+							"if (pm.iterationData.get(\"api_key\") !== \"N/A\") {\r",
+							"    pm.request.headers.add({\r",
+							"        key: \"x-cg-pro-api-key\",\r",
+							"        value: pm.iterationData.get(\"api_key\")\r",
+							"    });\r",
+							"} else {\r",
+							"    pm.request.headers.remove(\"x-cg-pro-api-key\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "x-cg-demo-api-key",
+						"value": "{{api_key}}"
+					}
+				],
+				"url": {
+					"raw": "https://api.coingecko.com/api/v3/simple/price?ids={{crypto_id}}&vs_currencies={{currency}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"coingecko",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "{{crypto_id}}"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "{{currency}}"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --request GET  \n\\--url [https://api.coingecko.com/api/v3/simple/price](https://api.coingecko.com/api/v3/simple/price)  \n\\--header 'accept: application/json'  \n\\--header 'x-cg-demo-api-key: CG-MrZTDqigbpkzzTobjWKz3N5r '"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

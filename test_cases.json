@@ -1,0 +1,13 @@
+[
+    { "test_case": "Valid single currency", "crypto_id": "ethereum", "currency": "usd", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Valid multiple currencies", "crypto_id": "ethereum", "currency": "usd,eur,btc", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Valid multiple cryptocurrencies", "crypto_id": "bitcoin,ethereum", "currency": "usd", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Invalid cryptocurrency", "crypto_id": "invalidcoin", "currency": "usd", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Invalid currency", "crypto_id": "ethereum", "currency": "invalid", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Missing ids", "crypto_id": "", "currency": "usd", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Missing currencies", "crypto_id": "ethereum", "currency": "", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Case sensitivity", "crypto_id": "EthereuM", "currency": "usd", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "No parameters", "crypto_id": "", "currency": "", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Valid API Key", "crypto_id": "ethereum", "currency": "usd", "api_key": "CG-MrZTDqigbpkzzTobjWKz3N5r" },
+    { "test_case": "Missing API Key", "crypto_id": "ethereum", "currency": "usd", "api_key": "" }
+]
