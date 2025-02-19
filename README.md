@@ -46,18 +46,19 @@ This project contains automated API tests for the **CoinGecko Simple Price API**
    ![Result](result.png)
 
 
-
-
-
-
 ## 📌 ** Load & Stress Testing **
 
 1. **Run Command for load testing**
    ```sh
      k6 run load_testing/load_test.js
 2. For Stress testing Increase load to 2 requests/sec into [load_test.js](load_testing/load_test.js)
- 
 
+## 📌 ** Security Testing **
 
-
-    
+1. **Install Mocha, Chai, and Supertest **
+   ```sh
+     npm install mocha chai supertest 
+   
+2. **Run Command for Security testing**
+   ```sh
+     npx mocha .\security_testing\sql_injection.js
