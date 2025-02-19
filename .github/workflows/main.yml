@@ -25,11 +25,11 @@ jobs:
 
       # Install Newman globally
       - name: Install Newman
-        run: npm install -g newman newman-reporter-html
+        run: npm install -g newman newman-reporter-htmlextra
 
       # Run Newman tests
       - name: Run Newman Tests
-        run: newman run coingecko.postman_collection.json --verbose -d test_cases.json --reporters cli -r html --reporter-html-export newman-report.html
+        run: newman run coingecko.postman_collection.json -d test_cases.json --reporters cli -r htmlextra --reporter-htmlextra-export newman-report.html
         continue-on-error: true
         
       # Upload HTML report as an artifact
