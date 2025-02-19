@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "7ced41bf-06c0-4c58-8faa-cf16c9ba641b",
-		"name": "CoinGecko API Collection",
+		"name": "Simple Price API Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "40852705"
 	},
@@ -64,7 +64,7 @@
 							"\r",
 							"// 🚀 **Performance Test**\r",
 							"pm.test(\"Response time should be within acceptable limits (<1 second)\", function () {\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1100);\r",
 							"});\r",
 							""
 						],

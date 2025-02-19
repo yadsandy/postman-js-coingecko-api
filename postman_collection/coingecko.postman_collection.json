@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "bb8ed947-4ff8-4b91-94c9-082afdc19feb",
+		"name": "CoinGecko API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40852705"
+	},
+	"item": [
+		{
+			"name": "Simple Price",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "x-cg-demo-api-key",
+						"value": "{{api_key}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/simple/price?ids=ethereum&vs_currencies=usd",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"simple",
+						"price"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "ethereum"
+						},
+						{
+							"key": "vs_currencies",
+							"value": "usd"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --request GET  \n\\--url [https://api.coingecko.com/api/v3/simple/price](https://api.coingecko.com/api/v3/simple/price)  \n\\--header 'accept: application/json'  \n\\--header 'x-cg-demo-api-key: CG-MrZTDqigbpkzzTobjWKz3N5r '"
+			},
+			"response": []
+		},
+		{
+			"name": "Coins List",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "x-cg-pro-api-key",
+						"value": "{{api_key}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/coins/list",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"coins",
+						"list"
+					]
+				},
+				"description": "Generated from cURL: curl --request GET \\\r\n     --url https://pro-api.coingecko.com/api/v3/coins/list \\\r\n     --header 'accept: application/json' \\\r\n     --header 'x-cg-pro-api-key: CG-MrZTDqigbpkzzTobjWKz3N5r\t'"
+			},
+			"response": []
+		},
+		{
+			"name": "Coins Market",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json"
+					},
+					{
+						"key": "x-cg-pro-api-key",
+						"value": "{{api_key}}"
+					}
+				],
+				"url": {
+					"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd",
+					"protocol": "https",
+					"host": [
+						"api",
+						"coingecko",
+						"com"
+					],
+					"path": [
+						"api",
+						"v3",
+						"coins",
+						"markets"
+					],
+					"query": [
+						{
+							"key": "vs_currency",
+							"value": "usd"
+						}
+					]
+				},
+				"description": "Generated from cURL: curl --request GET \\\r\n     --url https://pro-api.coingecko.com/api/v3/coins/markets \\\r\n     --header 'accept: application/json' \\\r\n     --header 'x-cg-pro-api-key: CG-MrZTDqigbpkzzTobjWKz3N5r\t'"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

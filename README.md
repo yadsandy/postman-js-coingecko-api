@@ -9,7 +9,7 @@ This project contains automated API tests for the **CoinGecko Simple Price API**
 - **API Under Test**: `GET /simple/price?ids=ethereum&vs_currencies=usd`  
 - **Automation Tools**: Postman, Newman  
 - **CI/CD Integration**: GitHub 
-- **Performance Testing**: Validates response time under 1 second  
+- **Performance Testing**: K6  
 
 ---
 
@@ -28,11 +28,11 @@ This project contains automated API tests for the **CoinGecko Simple Price API**
    npm install -g newman newman-reporter-htmlextra
 
 
-## 📌 ** Test Execution & Reports **
+## 📌 ** API Test Execution & Reports **
 
 1. **Run Command for test execution**  
    ```sh
-    newman run coingecko.postman_collection.json -d test_cases.json --reporters cli -r htmlextra --reporter-htmlextra-export newman-report.html
+    newman run postman_collection/simplepriceapi.postman_collection.json -d test_data/test_cases.json --reporters cli -r htmlextra --reporter-htmlextra-export newman-report.html
 
    
 2. **View test execution results**  
@@ -44,3 +44,20 @@ This project contains automated API tests for the **CoinGecko Simple Price API**
 
 
    ![Result](result.png)
+
+
+
+
+
+
+## 📌 ** Load & Stress Testing **
+
+1. **Run Command for load testing**
+   ```sh
+     k6 run load_testing/load_test.js
+2. For Stress testing Increase load to 2 requests/sec into [load_test.js](load_testing/load_test.js)
+ 
+
+
+
+    
