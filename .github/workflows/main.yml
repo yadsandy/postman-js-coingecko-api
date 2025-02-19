@@ -29,7 +29,7 @@ jobs:
 
       # Run Newman tests
       - name: Run Newman Tests
-        run: newman run coingecko.postman_collection.json -d test_cases.json --reporters cli -r htmlextra --reporter-htmlextra-export newman-report.html
+        run: newman run postman_collection/simplepriceapi.postman_collection.json -d test_data/test_cases.json --reporters cli -r htmlextra --reporter-htmlextra-export newman-report.html
         continue-on-error: true
         
       # Upload HTML report as an artifact
