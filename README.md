@@ -38,3 +38,7 @@ This project contains automated API tests for the **CoinGecko Simple Price API**
 2. **View test execution results**  
    ```sh
     start newman-report.html  # Windows
+   
+
+3. **Result Report screenshot**
+   ![Result](Screenshot%202025-02-19%20125541.png)
