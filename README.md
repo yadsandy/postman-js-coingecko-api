@@ -40,5 +40,7 @@ This project contains automated API tests for the **CoinGecko Simple Price API**
     start newman-report.html  # Windows
    
 
-3. **Result Report screenshot**
-   ![Result](Screenshot%202025-02-19%20125541.png)
+3. **Result screenshot**
+
+
+   ![Result](result.png)
